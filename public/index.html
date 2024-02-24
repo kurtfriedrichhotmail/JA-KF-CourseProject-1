@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+    <title>Recipe Tracker</title>
+</head>
+
+<body>
+
+    <div data-role="page" id="home">
+        <div data-role="header" data-theme='e'>
+            <div data-role="navbar" data-theme='e'>
+                <ul>
+                    <li><a href="#show" data-transition="slideup">Your Recipes</a></li>
+                    <li><a href="#add" data-transition="slideup">Add New Recipe</a></li>
+                </ul>
+            </div>
+            <h2>Welcome to Recipe Tracker</h2>
+        </div>
+
+        <div id="pictures" data-role="content" data-theme='a'>
+            Keep track of your favorite recipes here.<br><br>
+            <img src="images/dish1.jpg" alt="picture of food">&nbsp;&nbsp;&nbsp;
+            <img src="images/dish2.jpg" alt="picture of food">&nbsp;&nbsp;&nbsp;
+            <img src="images/dish3.jpg" alt="picture of food"><br><br><br>
+        </div>
+
+        <div data-role="footer" data-theme='b'>
+            <h3>Copyright 2024 by Recipe Tracker</h3>
+        </div>
+    </div>
+
+    <div data-role="page" id="show">
+        <div data-role="header" data-theme='e'>
+            <div data-role="navbar" data-theme='e'>
+                <ul>
+                    <li><a href="#home" data-transition="pop">Home Page</a></li>
+                    <li><a href="#add" data-transition="pop">Add New Recipe</a></li>
+                </ul>
+            </div>
+            <h2>Your Recipes</h2>
+        </div>
+
+        <div data-role="content" data-theme='c'>
+            <ul id="myul" data-role="listview"></ul>
+        </div>
+
+        <div data-role="footer" data-theme='b'>
+            <h3>Copyright 2024 by Recipe Tracker</h3>
+        </div>
+    </div>
+
+    <div data-role="page" id="add">
+        <div data-role="header" data-theme='e'>
+            <div data-role="navbar" data-theme='e'>
+                <ul>
+                    <li><a href="#home" data-transition="flip">Home Page</a></li>
+                    <li><a href="#show" data-transition="flip">Your Recipes</a></li>
+                </ul>
+            </div>
+            <h2>Add a New Recipe</h2>
+        </div>
+
+        <div data-role="content" data-theme='d'>
+            <label for="dataInput">Recipe Name:</label>
+            <input type="text" value="" id="dataInput" />
+
+            <label for="select-cuisine">Select Cuisine:</label>
+            <select name="select-cuisine" id="select-cuisine">
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Indian">Indian</option>
+                <option value="American">American</option>
+
+                <!-- Add more cuisines as needed -->
+            </select>
+
+            <label for="select-difficulty">Select Difficulty:</label>
+            <select name="select-difficulty" id="select-difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+            <label for="URLinput">Recipe URL:</label>
+            <input type="text" value="" id="URLinput" />
+
+            <button id="buttonAdd">Add Recipe</button>
+
+            <a href="#popupMenu" data-rel="popup" data-transition="slide"
+                class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">What's
+                next?</a>
+            <div data-role="popup" id="popupMenu" data-theme="b">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                    <li data-role="list-divider">Choose an action</li>
+                    <li><a href="#home" data-transition="flow">Back to Home</a></li>
+                    <li><a href="#show" data-transition="fade">Show Recipes</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div data-role="footer" data-theme='b'>
+            <h3>Copyright 2024 by Recipe Tracker</h3>
+        </div>
+
+    </div> <!-- end of page -->
+
+
+    <div data-role="page" id="details">
+        <div data-role="header" data-theme='e'>
+            <div data-role="navbar" data-theme='e'>
+                <ul>
+                    <li><a href="#home" data-transition="flow">Back to Home</a></li>
+                    <li><a href="#show" data-transition="slideup">Your Recipes</a></li>
+                    <li><a href="#add" data-transition="slideup">Add New Recipe</a></li>
+                </ul>
+            </div>
+            <!-- <h2>Here are the details</h2>
+            <h3>welcome to the details page</h3>
+            <h4>But which li did you click?? How can I know?</h4>
+            <h4>We can now get the ID out of local storage</h4> -->
+            <h4>Here is detail:</h4>
+            <ul data-role="listview">
+                <li>
+                    <p id="theID"></p>
+                </li>
+                <li>
+                    <p id="theName"></p>
+                </li>
+                <li>
+                    <p id="theCuisine"></p>
+                </li>
+                <li>
+                    <p id="theDifficulty"></p>
+                </li>
+                <li>
+                    <p id="theURL"></p>
+                </li>
+            </ul>
+            
+
+        </div>
+
+        <div data-role="content" data-theme='a'>
+
+        </div>
+
+        <div data-role="footer" data-theme='b'>
+            <h3>Copyright 2024 by Recipe Tracker</h3>
+        </div>
+    </div>
+
+</body>
+
+</html>

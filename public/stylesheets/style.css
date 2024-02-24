@@ -1,0 +1,13 @@
+body {
+  margin: 50px;
+  font-family: Helvetica, sans-serif;
+  font-size: 150%;
+}
+#pictures {
+
+      border: 5px solid;
+      margin: auto;
+      width: 60%;
+      padding: 10px;
+
+}
