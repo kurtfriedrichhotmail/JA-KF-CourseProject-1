@@ -24,16 +24,22 @@ function createList() {
     let myul = document.getElementById("myul");
     myul.innerHTML = ""; // Clear existing list items
 
-    RecipeArray.forEach(function (element) {
-        let li = document.createElement('li');
-        // Include the ID in the displayed text
-        li.innerHTML = `<a href="#details" onclick="showDetails('${element.ID}')">${element.ID}: ${element.name} - ${element.cuisine}</a>`;
-        myul.appendChild(li);
-    });
+    $.get("/getAllRecipes", function (data, status) { // AJAX get
+        RecipeArray = data; // copy returned server json data into local array
+        // now INSIDE this “call back” anonymous function,
+        // update the web page with this new data
 
-    if ($("#myul").hasClass('ui-listview')) {
-        $("#myul").listview('refresh');
-    }
+        RecipeArray.forEach(function (element) {
+            let li = document.createElement('li');
+            // Include the ID in the displayed text
+            li.innerHTML = `<a href="#details" onclick="showDetails('${element.ID}')">${element.ID}: ${element.name} - ${element.cuisine}</a>`;
+            myul.appendChild(li);
+        });
+
+        if ($("#myul").hasClass('ui-listview')) {
+            $("#myul").listview('refresh');
+        }
+    });
 }
 
 function showDetails(localID) {
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (storedRecipes) {
         RecipeArray = JSON.parse(storedRecipes);
     }
-    
+
     createList();
 
     document.getElementById("buttonAdd").addEventListener("click", function () {
