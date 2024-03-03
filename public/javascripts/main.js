@@ -51,6 +51,7 @@ function showDetails(localID) {
         document.getElementById("theCuisine").innerHTML = "Cuisine: " + data.cuisine;
         document.getElementById("theDifficulty").innerHTML = "Difficulty: " + data.difficulty;
         document.getElementById("theURL").innerHTML = "Click for instructions: <a href='" + data.URL + "' target='_blank'>Recipe Instructions</a>";
+        localStorage.setItem("localID", data.ID);
         $.mobile.changePage("#details");
     }
 }
@@ -79,11 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // button details page to delete
     document.getElementById("delete").addEventListener("click", function () {
-        let recipeID = localStorage.getItem('parm');
+        let recipeID = localStorage.getItem('localID');
         $.ajax({
             type: "DELETE",
             url: "/DeleteRecipe/" +recipeID,
-            success: function(result){},
+            success: function(result){
+                alert("Delete Successfully");
+                $.mobile.navigate("#show");
+                createList(); // Re-create the list to reflect the deletion
+            },
             
             error: function (xor, textSt, errorThrown) {
                 alert("Server could not delete Recipe with ID " + recipeID);
