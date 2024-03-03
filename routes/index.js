@@ -11,6 +11,22 @@ let RecipeObject = function (pName, pCuisine, pDifficulty, pURL) {
     this.URL = pURL;
 };
 
+// add route for delete
+router.delete('/DeleteRecipe/:ID', (req, res) => {
+  const delID = req.params.ID;
+  let pointer = GetObjectPointer(delID);
+
+   if(pointer == -1) {  // if did nt find movie in array
+    console.log("not found");
+    return res.status(500).json({
+        status: "error - no such ID"
+    });
+  } else {  // if did find the recipe
+    ServerRecipeArray.splice(pointer, 1);  // remove 1 element at index
+    res.send('Recipe with ID: ' + delID + ' deleted!');
+  }
+});
+
 function GetObjectPointer(localID) {
     return RecipeArray.findIndex(recipe => recipe.ID === localID);
 }
