@@ -28,7 +28,7 @@ router.delete('/DeleteRecipe/:ID', (req, res) => {
 });
 
 function GetObjectPointer(localID) {
-    return RecipeArray.findIndex(recipe => recipe.ID === localID);
+    return ServerRecipeArray.findIndex(recipe => recipe.ID === localID);
 }
 
 // Preload some recipes

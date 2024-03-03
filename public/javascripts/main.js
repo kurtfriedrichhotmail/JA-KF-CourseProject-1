@@ -77,6 +77,22 @@ document.addEventListener("DOMContentLoaded", function () {
         $.mobile.changePage("#show");
     });
 
+    // button details page to delete
+    document.getElementById("delete").addEventListener("click", function () {
+        let recipeID = localStorage.getItem('parm');
+        $.ajax({
+            type: "DELETE",
+            url: "/DeleteRecipe/" +recipeID,
+            success: function(result){},
+            
+            error: function (xor, textSt, errorThrown) {
+                alert("Server could not delete Recipe with ID " + recipeID);
+            }
+        });
+    });
+
+
+
     document.getElementById("select-cuisine").addEventListener("change", function () {
         selectedCuisine = this.value;
     });
