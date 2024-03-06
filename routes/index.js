@@ -41,19 +41,18 @@ console.log(ServerRecipeArray);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.sendFile('index.html');
-});
+})
 
 /* GET all Recipe data */
 router.get('/getAllRecipes', function(req, res) {
   res.status(200).json(ServerRecipeArray);
-});
+})
 
-/* Add on new recipe */
+/* Add one new recipe */
 router.post('/AddRecipe', function(req, res) {
   const newRecipe = req.body;
   ServerRecipeArray.push(newRecipe);
   res.status(200).json(newRecipe);
 });
-
 
 module.exports = router;

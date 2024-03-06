@@ -64,38 +64,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
     createList();
 
-    document.getElementById("buttonAdd").addEventListener("click", function () {
-        let nameInput = document.getElementById("dataInput").value;
-        let URLinput = document.getElementById("URLinput").value;
-        let recipe = new RecipeObject(nameInput, selectedCuisine, selectedDifficulty, URLinput);
-        RecipeArray.push(recipe);
+// add button events **************************************************************************************************************
 
-        document.getElementById("dataInput").value = "";
-        document.getElementById("URLinput").value = "";
+document.getElementById("buttonAdd").addEventListener("click", function () {
+    let nameInput = document.getElementById("dataInput").value;
+    let URLinput = document.getElementById("URLinput").value;
+    let recipe = new RecipeObject(nameInput, selectedCuisine, selectedDifficulty, URLinput);
+    RecipeArray.push(recipe);
 
-        localStorage.setItem("recipes", JSON.stringify(RecipeArray));
-        createList();
-        $.mobile.changePage("#show");
-    });
-
-    // button details page to delete
-    document.getElementById("delete").addEventListener("click", function () {
-        let recipeID = localStorage.getItem('localID');
-        $.ajax({
-            type: "DELETE",
-            url: "/DeleteRecipe/" +recipeID,
-            success: function(result){
-                alert("Delete Successfully");
-                $.mobile.navigate("#show");
-                createList(); // Re-create the list to reflect the deletion
+    $.ajax({
+        type: "POST",
+        url: "/AddRecipe",
+        data: recipe,
+        success: function(result){
+            createList(); // Re-create the list to reflect the deletion
+            $.mobile.navigate("#show");
             },
-            
             error: function (xor, textSt, errorThrown) {
                 alert("Server could not delete Recipe with ID " + recipeID);
-            }
-        });
-    });
+                }
+            });
 
+    document.getElementById("dataInput").value = "";
+    document.getElementById("URLinput").value = "";
+
+    localStorage.setItem("recipes", JSON.stringify(RecipeArray));
+    
+});
+
+// button details page to delete
+document.getElementById("delete").addEventListener("click", function () {
+    let recipeID = localStorage.getItem('localID');
+    $.ajax({
+    type: "DELETE",
+    url: "/DeleteRecipe/" +recipeID,
+    success: function(result){
+        $.mobile.navigate("#show");
+        createList(); // Re-create the list to reflect the deletion
+        },
+        
+    error: function (xor, textSt, errorThrown) {
+        alert("Server could not delete Recipe with ID " + recipeID);
+        }
+    });
+});
 
 
     document.getElementById("select-cuisine").addEventListener("change", function () {
