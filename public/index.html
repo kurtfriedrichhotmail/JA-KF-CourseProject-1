@@ -11,15 +11,17 @@
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="javascripts/main.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/themes/custom.min.css">
 
+    <link rel="icon" href="images/favicon.ico">
     <title>Recipe Tracker</title>
 </head>
 
 <body>
 
     <div data-role="page" id="home">
-        <div data-role="header" data-theme='e'>
-            <div data-role="navbar" data-theme='e'>
+        <div data-role="header" data-theme='a'>
+            <div data-role="navbar" data-theme='a'>
                 <ul>
                     <li><a href="#show" data-transition="slideup">Your Recipes</a></li>
                     <li><a href="#add" data-transition="slideup">Add New Recipe</a></li>
@@ -37,14 +39,14 @@
             <img src="images/dish3.jpg" alt="picture of food"><br><br><br>
         </div>
 
-        <div data-role="footer" data-theme='b'>
+        <div data-role="footer" data-theme='a'>
             <h3>Copyright 2024 by Recipe Tracker</h3>
         </div>
     </div>
 
     <div data-role="page" id="show">
-        <div data-role="header" data-theme='e'>
-            <div data-role="navbar" data-theme='e'>
+        <div data-role="header" data-theme='b'>
+            <div data-role="navbar" data-theme='a'>
                 <ul>
                     <li><a href="#home" data-transition="pop">Home Page</a></li>
                     <li><a href="#add" data-transition="pop">Add New Recipe</a></li>
@@ -54,7 +56,7 @@
             <h2>Your Recipes</h2>
         </div>
 
-        <div data-role="content" data-theme='c'>
+        <div data-role="content" data-theme='a'>
             <ul id="myul" data-role="listview"></ul>
         </div>
 
@@ -64,8 +66,8 @@
     </div>
 
     <div data-role="page" id="add">
-        <div data-role="header" data-theme='e'>
-            <div data-role="navbar" data-theme='e'>
+        <div data-role="header" data-theme='a'>
+            <div data-role="navbar" data-theme='a'>
                 <ul>
                     <li><a href="#home" data-transition="flip">Home Page</a></li>
                     <li><a href="#show" data-transition="flip">Your Recipes</a></li>
@@ -75,7 +77,7 @@
             <h2>Add a New Recipe</h2>
         </div>
 
-        <div data-role="content" data-theme='d'>
+        <div data-role="content" data-theme='b'>
             <label for="dataInput">Recipe Name:</label>
             <input type="text" value="" id="dataInput" />
 
@@ -100,12 +102,12 @@
             <label for="URLinput">Recipe URL:</label>
             <input type="text" value="" id="URLinput" />
 
-            <button id="buttonAdd">Add Recipe</button>
+            <button id="buttonAdd" class="ui-btn" >Add Recipe</button>
 
             <a href="#popupMenu" data-rel="popup" data-transition="slide"
                 class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a">What's
                 next?</a>
-            <div data-role="popup" id="popupMenu" data-theme="b">
+            <div data-role="popup" id="popupMenu" data-theme="a">
                 <ul data-role="listview" data-inset="true" style="min-width:210px;">
                     <li data-role="list-divider">Choose an action</li>
                     <li><a href="#home" data-transition="flow">Back to Home</a></li>
@@ -115,7 +117,7 @@
         </div>
 
 
-        <div data-role="footer" data-theme='b'>
+        <div data-role="footer" data-theme='a'>
             <h3>Copyright 2024 by Recipe Tracker</h3>
         </div>
 
@@ -123,8 +125,8 @@
 
 
     <div data-role="page" id="details">
-        <div data-role="header" data-theme='e'>
-            <div data-role="navbar" data-theme='e'>
+        <div data-role="header" data-theme='a'>
+            <div data-role="navbar" data-theme='a'>
                 <ul>
                     <li><a href="#home" data-transition="flow">Back to Home</a></li>
                     <li><a href="#show" data-transition="slideup">Your Recipes</a></li>
@@ -164,7 +166,7 @@
 
         </div>
 
-        <div data-role="footer" data-theme='b'>
+        <div data-role="footer" data-theme='a'>
             <h3>Copyright 2024 by Recipe Tracker</h3>
         </div>
     </div>
